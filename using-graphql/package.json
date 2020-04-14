@@ -1,0 +1,12 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "description": "The seminal implementation of GraphQL came from Facebook in the `npm` package `graphql`, which is what we will illustrate in this solution.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
