@@ -11,5 +11,5 @@ npm start
 ## Sending a GraphQL Query
 
 ```
-curl -G 'https://localhost:<port>' --data-urlencode 'query={...}'
+curl -G 'http://localhost:<port>/graphql' --data-urlencode 'query={...}'
 ```
