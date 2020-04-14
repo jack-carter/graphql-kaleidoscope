@@ -25,7 +25,7 @@ To support each of the various approaches across this repository, we have create
 ```
 [
     { type: ACCOUNTING, name: "Accounting" },
-    { type: MARKETING, name; "Marketing" },
+    { type: MARKETING, name: "Marketing" },
     { type: CUSTOMERSERVIE, name: "Customer Service" }
 ]
 ```
