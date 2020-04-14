@@ -7,7 +7,26 @@ const {
 
 const typeDefs = `
 type Query {
-    hello: String
+    departments : [Department!]!
+    employees : [Employee!]!
+}
+
+enum DepartmentCategory {
+    ACCOUNTING
+    MARKETING
+    CUSTOMERSERVICE
+}
+
+type Department {
+    type: DepartmentCategory!
+    name: String!
+    employees: [Employee!]!
+}
+
+type Employee {
+    name: String!
+    department: DepartmentCategory!
+    fulltime: Boolean!
 }
 `
 

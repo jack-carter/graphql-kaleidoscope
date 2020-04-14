@@ -22,7 +22,7 @@ type Query {
     departments : [Department!]!
     department(name: String!) : Department
     department(type: DepartmentCategory) : Department
-    employees : [Employees!]!
+    employees : [Employee!]!
     employee(name: String!) : Employee
 }
 
