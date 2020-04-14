@@ -1,0 +1,2 @@
+# Tell Git to ignore the node_modules folder in this folder and any sub-folder
+node_modules/
