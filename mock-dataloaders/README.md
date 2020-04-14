@@ -10,13 +10,22 @@ In the GraphQL world the need to handle these commonly occurring situations has 
 
 To support each of the various approaches across this repository, we have created a set of DataLoader components that fully mimic the interactions a GraphQL Server would have with a typical DataLoader implementation.
 
-### The DepartmentLoader
+### Loading Departments
 
-...
+```
+const { findDepartmentsByType } = require('mock-dataloaders')
 
-### The EmployeeLoader
+findDepartmentsByType.load(ACCOUNTING)
+```
 
-...
+### Loading Empployees
+
+```
+const { findEmployeesByDepartment, findEmployeesByName } = require('mock-dataloaders')
+
+findEmployeesByDepartment.load(ACCOUNTING)
+findEmployeesByName.load("Mickey Mouse")
+```
 
 ## The Data
 
