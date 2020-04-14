@@ -1,9 +1,9 @@
 // This file creates a series of mock DataLoaders for GraphQL implementations to use.
 
 module.exports = {
-    findDepartmentsByType: () => new DataLoader( types => find(Departments,"type",types) ),
-    findEmployeesByDepartment: () => new DataLoader( departments => find(Employees,"department",departments) ),
-    findEmployeesByName: () => new DataLoader( names => find(Employees,"name",names) )
+    findDepartmentsByType: new DataLoader( types => find(Departments,"type",types) ),
+    findEmployeesByDepartment: new DataLoader( departments => find(Employees,"department",departments) ),
+    findEmployeesByName: new DataLoader( names => find(Employees,"name",names) )
 }
 
 // All the DataLoaders above will essentially retrieve items in the same way, as defined by the batch function below.
