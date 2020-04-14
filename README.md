@@ -63,14 +63,14 @@ Please read ... for details on our code of conduct, and the process for submitti
 
 ## Versioning
 
-We use ... for versioning. For the versions available, see the [tags in this repository] {https://github.com/jack-carter/graphql-kaleidoscope)
+We use ... for versioning. For the versions available, see the [tags in this repository](https://github.com/jack-carter/graphql-kaleidoscope)
 
 ## Authors
-i
+
 * **Jack Carter** - *Initial work* - [LinkedIn](linkedin.com/in/thejackcarter)
 
 ## License
-i
+
 This project is licensed under the ...
 
 ## Acknowledgements
