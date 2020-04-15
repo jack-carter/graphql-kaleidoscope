@@ -9,16 +9,42 @@ const Departments = {
         CUSTOMERSERVICE: 2
     },
 
-    loadAll: () => Promise.resolve(DepartmentData.filter( item => true ))
+    loadAll() {
+        console.log('Loading ALL Departments')
+        return Promise.resolve(ALL(DepartmentData))
+    }
+}
+
+const Employees = {
+    loadAll() {
+        console.log('Loading ALL Employees')
+        return Promise.resolve(ALL(EmployeesData))
+    }
 }
 
 module.exports = {
     Departments,
     DepartmentsCategory: Departments.Category,
+    
+    Employees,
+
+    NO_MATCHES: LOAD( () => [] ),
 
     findDepartmentsByType: new DataLoader( types => find(Departments,"type",types) ),
     findEmployeesByDepartment: new DataLoader( departments => find(EmployeeData,"department",departments) ),
     findEmployeesByName: new DataLoader( names => find(EmployeeData,"name",names) )
+}
+
+// Convenience functions to keep typing low
+
+function ALL(collection) {
+    // Just include everything in the collection
+    return collection.filter( item => true )
+}
+
+function LOAD(loadingfunction) {
+    // Return a function that runs a Promise, that runs a loading function.
+    return () => Promise.resolve(loadingfunction)
 }
 
 // All the DataLoaders above will essentially retrieve items in the same way, as defined by the batch function below.

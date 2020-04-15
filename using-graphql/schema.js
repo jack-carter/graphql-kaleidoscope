@@ -11,8 +11,13 @@ const {
 } = require('graphql')
 
 const {
-    Departments
+    Departments,
+    NO_MATCHES
 } = require('../mock-dataloaders')
+
+function RESOLVING(item) {
+    console.log('Resolving "%s" ...',item)
+}
 
 const DepartmentCategoryType = new GraphQLEnumType({
     name: 'DepartmentCategory',
@@ -33,10 +38,10 @@ const DepartmentType = new GraphQLObjectType({
         // Must have a resolver to narrow the list of Employees to just this department. 
         employees: { 
             type: GraphQLList(EmployeeType),
-            resolve(parent,args) {
-                let department = parent
+            async resolve(parent,args) {
+                RESOLVING('Department.employees')
                 // TODO pull the Employees for this Department
-                return [] // dummy return for now
+                return await NO_MATCHES // dummy return for now
             } 
         }
     })
@@ -58,14 +63,19 @@ const QueryType = new GraphQLObjectType({
         departments: {
             type: new GraphQLList(DepartmentType),
             async resolve(parent,args) {
-                return await Departments.loadAll()
+                RESOLVING('departments ...')
+                let employees = await Departments.loadAll()
+                RESOLVING('departments: %s',departments)
+                return departments
             }
         },
         employees: {
             type: new GraphQLList(EmployeeType),
-            resolve(parent, args) {
-                // TODO implement the resolver
-                return [] // dummy return for now
+            async resolve(parent, args) {
+                RESOLVING('employees ...')
+                let employees = await Employees.loadAll()
+                RESOLVING('employees: %s',employees)
+                return employees
             }
         }
     })
