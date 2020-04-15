@@ -12,7 +12,7 @@ const {
 
 const {
     Employees,
-} = require('../mock-dataloaders')
+} = require('./mock-dataloaders')
 
 const EmployeeType = new GraphQLObjectType({
     name: 'Employee',

@@ -2,7 +2,7 @@ const {
     Departments,
     Employees,
     NO_MATCHES
-} = require('../mock-dataloaders')
+} = require('./mock-dataloaders')
 
 const {
     makeExecutableSchema
