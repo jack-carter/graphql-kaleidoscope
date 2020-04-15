@@ -4,9 +4,16 @@ The seminal implementation of GraphQL came from Facebook in the `npm` package `g
 
 ## Running the Server
 
-With nodemon: `npm run dev'
+With nodemon: 
+```
+npm run dev
+```
 
-Without nodemon: `npm start'
+Without nodemon: 
+
+```
+npm start
+```
 
 ## Sending a GraphQL Query
 
