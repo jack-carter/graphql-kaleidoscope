@@ -1,5 +1,5 @@
 const { queryType, stringArg, makeSchema } = require('@nexus/schema')
-const { GraphQLServer } = require('graphql-yoga')
+// const { GraphQLServer } = require('graphql-yoga')
 
 const Query = queryType({
     definition(t) {
@@ -18,8 +18,13 @@ const schema = makeSchema({
     },
 })
 
-const server = new GraphQLServer({
-    schema,
-})
+/* 
+    ! refactor this to use the same server as other examples instead of graphql-yoga
+*/
+// const server = new GraphQLServer({
+//     schema,
+// })
 
-server.start(() => console.log('Server is running on http://localhost:4000!'))
+// server.start(() => console.log('Server is running on http://localhost:4000!'))
+
+module.exports = schema
