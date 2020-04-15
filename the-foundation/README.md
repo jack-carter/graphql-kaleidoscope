@@ -20,10 +20,7 @@ The easiest means of describing the data which is accessible through GraphQL is 
 ```
 type Query {
     departments : [Department!]!
-    department(name: String!) : Department
-    department(type: DepartmentCategory) : Department
     employees : [Employees!]!
-    employee(name: String!) : Employee
 }
 
 enum DepartmentCategory {
