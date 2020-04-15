@@ -1,12 +1,12 @@
 const {
-    makeExecutableSchema
-} = require('graphql-tools')
-
-const {
     Departments,
     Employees,
     NO_MATCHES
 } = require('../mock-dataloaders')
+
+const {
+    makeExecutableSchema
+} = require('graphql-tools')
 
 const typeDefs = `
 type Query {
