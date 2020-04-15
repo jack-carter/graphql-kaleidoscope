@@ -1,35 +1,33 @@
-// We won't be using all of the GraphQL schema type definitions, but only the ones needed for the
-// dataset and query structure we've defined.
-
 const {
     makeExecutableSchema
 } = require('graphql-tools')
 
+const {
+    Departments,
+    Employees,
+    NO_MATCHES
+} = require('../mock-dataloaders')
+
 const typeDefs = `
 type Query {
-    departments : [Department!]!
     employees : [Employee!]!
-}
-
-enum DepartmentCategory {
-    ACCOUNTING
-    MARKETING
-    CUSTOMERSERVICE
-}
-
-type Department {
-    type: DepartmentCategory!
-    name: String!
-    employees: [Employee!]!
 }
 
 type Employee {
     name: String!
-    department: DepartmentCategory!
+    department: String!
     fulltime: Boolean!
 }
 `
 
-const schema = makeExecutableSchema({ typeDefs })
+const resolvers = {
+    Query: {
+        async employees() {
+            return await Employees.loadAll()
+        }
+    }
+}
+
+const schema = makeExecutableSchema({ typeDefs, resolvers })
 
 module.exports = schema

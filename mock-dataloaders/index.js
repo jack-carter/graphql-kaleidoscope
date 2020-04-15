@@ -2,37 +2,15 @@
 
 const DataLoader = require('dataloader')
 
-const Departments = {
-    Category: {
-        ACCOUNTING: 0,
-        MARKETING: 1,
-        CUSTOMERSERVICE: 2
-    },
-
-    loadAll() {
-        console.log('Loading ALL Departments')
-        return Promise.resolve(ALL(DepartmentData))
-    }
-}
-
 const Employees = {
     loadAll() {
         console.log('Loading ALL Employees')
-        return Promise.resolve(ALL(EmployeesData))
+        return Promise.resolve(ALL(EmployeeData))
     }
 }
 
 module.exports = {
-    Departments,
-    DepartmentsCategory: Departments.Category,
-    
-    Employees,
-
-    NO_MATCHES: LOAD( () => [] ),
-
-    findDepartmentsByType: new DataLoader( types => find(Departments,"type",types) ),
-    findEmployeesByDepartment: new DataLoader( departments => find(EmployeeData,"department",departments) ),
-    findEmployeesByName: new DataLoader( names => find(EmployeeData,"name",names) )
+    Employees
 }
 
 // Convenience functions to keep typing low
@@ -52,30 +30,18 @@ function LOAD(loadingfunction) {
 const find = (collection, field, ...values) => {
     // Batch functions for DataLoaders should always return a Promise.
     // We've simply used the easiest Promise available.
-    return Promise.resolve(collection.filter( item => values.includes(item[field]) ))
+    return collection.filter( item => values.includes(item[field]) )
 }
-
-// These simply shorten the amount of typing in the collections that follow.
-
-const ACCOUNTING = Departments.Category.ACCOUNTING
-const MARKETING = Departments.Category.MARKETING
-const CUSTOMERSERVICE = Departments.Category.CUSTOMERSERVICE
 
 // To keep things simple we'll just keep the data in memory.
 
-const DepartmentData = [
-    { type: ACCOUNTING, name: "Accounting" },
-    { type: MARKETING, name: "Marketing" },
-    { type: CUSTOMERSERVICE, name: "Customer Service" }
-]
-
 const EmployeeData = [
-    { name: "Mickey Mouse", department: ACCOUNTING, fulltime: true },
-    { name: "Minney Mouse", department: ACCOUNTING, fulltime: true },
+    { name: "Mickey Mouse", department: 'Accounting', fulltime: true },
+    { name: "Minney Mouse", department: 'Accounting', fulltime: true },
 
-    { name: "Goofy", department: MARKETING, fulltime: true },
-    { name: "Donald Duck", department: MARKETING, fulltime: true },
+    { name: "Goofy", department: 'Marketing', fulltime: true },
+    { name: "Donald Duck", department: 'Marketing', fulltime: true },
 
-    { name: "Bugs Bunny", department: Departments.Category.CUSTOMERSERVICE, fulltime: false },
-    { name: "Daffy Duck", department: Departments.Category.CUSTOMERSERVICE, fulltime: false }
+    { name: "Bugs Bunny", department: 'Customer Service', fulltime: false },
+    { name: "Daffy Duck", department: 'Customer Service', fulltime: false }
 ]
