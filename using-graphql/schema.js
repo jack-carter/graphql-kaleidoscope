@@ -3,7 +3,6 @@
 
 const {
     GraphQLSchema,
-    GraphQLNonNull,
     GraphQLEnumType,
     GraphQLObjectType,
     GraphQLBoolean,
