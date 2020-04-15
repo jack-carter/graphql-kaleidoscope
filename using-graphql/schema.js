@@ -10,6 +10,10 @@ const {
     GraphQLList
 } = require('graphql')
 
+const {
+    Departments
+} = require('../mock-dataloaders')
+
 const DepartmentCategoryType = new GraphQLEnumType({
     name: 'DepartmentCategory',
     values: {
@@ -53,9 +57,8 @@ const QueryType = new GraphQLObjectType({
     fields: () => ({
         departments: {
             type: new GraphQLList(DepartmentType),
-            resolve(parent,args) {
-                // TODO implement the resolver
-                return [] // dummy return for now
+            async resolve(parent,args) {
+                return await Departments.loadAll()
             }
         },
         employees: {
