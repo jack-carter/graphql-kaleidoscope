@@ -17,9 +17,18 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  DepartmentCategory: "ACCOUNTING" | "CUSTOMERSERVICE" | "MARKETING"
 }
 
 export interface NexusGenRootTypes {
+  Department: { // root type
+    name: string; // String!
+    type?: NexusGenEnums['DepartmentCategory'] | null; // DepartmentCategory
+  }
+  Employee: { // root type
+    fulltime: boolean; // Boolean!
+    name: string; // String!
+  }
   Query: {};
   String: string;
   Int: number;
@@ -29,20 +38,27 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  DepartmentCategory: NexusGenEnums['DepartmentCategory'];
 }
 
 export interface NexusGenFieldTypes {
+  Department: { // field return type
+    employees: NexusGenRootTypes['Employee'][]; // [Employee!]!
+    name: string; // String!
+    type: NexusGenEnums['DepartmentCategory'] | null; // DepartmentCategory
+  }
+  Employee: { // field return type
+    department: NexusGenRootTypes['Department']; // Department!
+    fulltime: boolean; // Boolean!
+    name: string; // String!
+  }
   Query: { // field return type
-    hello: string; // String!
+    departments: NexusGenRootTypes['Department'][]; // [Department!]!
+    employees: NexusGenRootTypes['Employee'][]; // [Employee!]!
   }
 }
 
 export interface NexusGenArgTypes {
-  Query: {
-    hello: { // args
-      name?: string | null; // String
-    }
-  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -50,11 +66,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query";
+export type NexusGenObjectNames = "Department" | "Employee" | "Query";
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = "DepartmentCategory";
 
 export type NexusGenInterfaceNames = never;
 
