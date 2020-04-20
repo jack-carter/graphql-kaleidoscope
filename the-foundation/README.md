@@ -19,25 +19,12 @@ The easiest means of describing the data which is accessible through GraphQL is 
 
 ```
 type Query {
-    departments : [Department!]!
-    employees : [Employees!]!
-}
-
-enum DepartmentCategory {
-    ACCOUNTING
-    MARKETING
-    CUSTOMERSERVICE
-}
-
-type Department {
-    type: DepartmentCategory
-    name: String!
-    employees: [Employee!]!
+    employees : [Employee!]!
 }
 
 type Employee {
     name: String!
-    department: Department!
+    department: String!
     fulltime: Boolean!
 }
 ```

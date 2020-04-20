@@ -1,0 +1,31 @@
+{
+  "name": "graphql-kaleidoscope",
+  "version": "1.0.0",
+  "description": "This project is a collection of GraphQL implementations that illustrates the various ways GraphQL can be implemted using Node.js, along with the various libraries and frameworks that are available. Here is a list of the different approaches you will find in this repository:",
+  "main": "noserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack-carter/graphql-kaleidoscope.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jack-carter/graphql-kaleidoscope/issues"
+  },
+  "homepage": "https://github.com/jack-carter/graphql-kaleidoscope#readme",
+  "dependencies": {
+    "@nexus/schema": "^0.13.1",
+    "command-line-args": "^5.1.1",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "graphql-nexus": "^0.1.1",
+    "graphql-tools": "^5.0.0",
+    "nexus": "^0.12.0"
+  }
+}
