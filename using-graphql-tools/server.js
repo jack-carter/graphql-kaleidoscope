@@ -15,7 +15,7 @@ const schema = require('./schema.js')
 // })
 
 let server = new GraphQLServer({
-    schema,
+    schema
 })
 
 server.start(() => console.log('GraphQL server running at http://localhost:4000 !'))

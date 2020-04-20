@@ -2,6 +2,25 @@
 ### Do not make changes to this file directly
 
 
+type Department {
+  employees: [Employee!]!
+  name: String!
+  type: DepartmentCategory
+}
+
+enum DepartmentCategory {
+  ACCOUNTING
+  CUSTOMERSERVICE
+  MARKETING
+}
+
+type Employee {
+  department: Department!
+  fulltime: Boolean!
+  name: String!
+}
+
 type Query {
-  hello(name: String): String!
+  departments: [Department!]!
+  employees: [Employee!]!
 }

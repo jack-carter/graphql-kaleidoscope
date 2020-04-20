@@ -2,6 +2,11 @@
 // dataset and query structure we've defined.
 
 const {
+    Departments,
+    Employees
+} =  require('../mock-dataloaders')
+
+const {
     makeExecutableSchema
 } = require('graphql-tools')
 
@@ -30,6 +35,27 @@ type Employee {
 }
 `
 
-const schema = makeExecutableSchema({ typeDefs })
+const resolvers = {
+    Query: {
+        departments(root,args,ctx) {
+            return Promise.resolve(Departments) 
+        },
+        employees(root,args,ctx) {
+            return Promise.resolve(Employees)
+        }
+    },
+    Department: {
+        employees(department,args,ctx) {
+            return Promise.resolve(Employees.filter(employee => employee.department == department.type))
+        }
+    },
+    Employee: {
+        department(employee,args,ctx) {
+            return Promise.resolve(Departments.filter(department => department.type == employee.department))
+        }
+    }
+}
+
+const schema = makeExecutableSchema({ typeDefs, resolvers })
 
 module.exports = schema
